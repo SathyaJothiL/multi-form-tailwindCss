@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+label{
+    margin: 0;
+    padding: 0;
+}
+
+.hidden{
+    display: none;
+}
+.stepper{
+    background-image: url(./images/bg-sidebar-desktop.svg);
+}
+.stepper button{
+    /* border-style: none; */
+    border-color: lightblue;
+    border: 1px solid hsl(206,94%,87%);
+}
+.multi-form{
+    width: min(100%, 1000px);
+    height: min(90%, 700px);
+}
+.inputBox{
+    position: relative;
+}
+.plan label{
+    outline-style: none;
+}
+.plan input{
+    appearance: none;
+}
+.toggle input{
+    display: none;
+}
+
+input:checked + .slider{
+    transform: translateX(100%);
+}
+.active{
+    border: 1px solid hsl(243,100%,62%);
+    border-radius: 1rem;
+}
+.errorClass{
+    color: hsl(354,84%,57%);
+    border-radius: 1rem;
+}
+.errorInput{
+    border: 1px solid hsl(354,84%,57%)    !important;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+}
+.highlight{
+    background-color: hsl(206,94%,87%);
+}
+.checkouts{
+    display: flex;
+    flex-direction: column;
+    /* background-color: aqua; */
+    margin: 2rem;
+    row-gap: 2rem;
+    margin-bottom: 4rem;
+    padding-left: 0.9rem;
+}
+.checkout-plan h5{
+    color: hsl(213,96%,18%);
+    font-weight: 700;
+    font-size: 19px;;
+}
+.checkout p{
+    font-weight: 700;
+    font-size: 18px;
+    color: hsl(213,96%,18%);
+}
+.checkout-plan button{
+    text-decoration: underline;
+    color:hsl(231,11%,63%);
+    font-weight: 500;  
+}
+.checkout-plan{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* row-gap: 2rem; */
+}
+.checkout{
+    display: flex;
+    justify-content: space-between;
+    column-gap: 2rem;
+}
+.checkout p:first-child{
+    color: hsl(231,11%,63%);
+    font-weight: 700;
+    font-size: 16px;
+    
+}
+.checkout p:last-child{
+    font-weight: 600;
+    font-size: 16px;
+    color: hsl(213,96%,18%);
+}
+.checkout-total{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 3rem;
+    padding-right: 2rem;
+}
+.checkout-total p:first-child{
+    color: hsl(231,11%,63%);
+    font-weight: 700;
+    font-size: 16px;
+}
+.checkout-total p:last-child{
+    font-weight: 700;
+    font-size: 21px;
+    color: hsl(243,100%,62%);
+}
+.alignCenter{
+    justify-content: center;
+    align-items: center;
+}
+.hrs{
+color: lightgray;
+}
+.lightGray{
+    background-color: lightgray;
+}
