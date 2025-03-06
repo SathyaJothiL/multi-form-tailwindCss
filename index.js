@@ -132,6 +132,20 @@ function previousSlide(event){
     if(currentSlide===3){
         removeElements()
     }
+    if(currentSlide===2){
+        if(SOT['isMonthly']===true){
+            let addonMonthly = SOT['addon']['monthly']
+            for(let i in addonMonthly){
+                addonMonthly[i]['isChecked']=false
+            }
+        }else{
+            let addonYearly = SOT['addon']['yearly']
+            for(let i in addonYearly){
+                addonYearly[i]['isChecked']=false
+            }
+        }
+        removeAddons()
+    }
 
     stepperList[currentSlide].classList.remove('highlight')
 
@@ -262,29 +276,27 @@ function validateNumber(input){
 // step 2
 
 let plans = document.querySelector('.plans')
-let checkboxes = plans.querySelectorAll("input[type ='checkbox']")
 
-checkboxes.forEach(checkbox=>{
-    checkbox.addEventListener('change',function(e){
-        console.log(this);
-        this.checked = true
-        this.parentElement.classList.add('active')
-        id = this.id
-        SOT.plan[id]=true
+plans.addEventListener('click',function(e){
 
-        plans.querySelectorAll("input[type='checkbox']")
+    let plan = e.target.closest(".plan")
+    targetElement=plan.firstElementChild
+
+    targetElement.checked = true
+    targetElement.parentElement.classList.add('active')
+    id = targetElement.id
+    SOT.plan[id]=true
+        
+    plans.querySelectorAll("input[type='checkbox']")
         .forEach(input=>{
             id=input.id
-            if(input!==this){              
+            if(input!==targetElement){              
                 input.checked = false
                 input.parentElement.classList.remove('active')
                 SOT.plan[id]=false
             }
-        })
-        console.log(planSOT);
-    })
+    })   
 })
-
 let pList = document.querySelectorAll('.plan p')
 let togglebtn = document.querySelector('#togglebtn')
 
@@ -339,15 +351,14 @@ function togglePlan(){
 }
 // step 3
 
-let addonsList = document.querySelectorAll('.addon')
+let addons = document.querySelector('.addons')
+addons.addEventListener('click',function(event){
 
-addonsList.forEach(addon=>{
-    addon.addEventListener('click',function(event){
-        console.log(event.target.tagName);
-        
-        if(event.target.tagName==='INPUT'){
+    console.log(event.target.tagName);
+    let addon = event.target.closest('.addon')
+    if(event.target.tagName==='INPUT'){
             return;
-        }
+    }
     let checkbox = addon.firstElementChild
     checkbox.checked = !checkbox.checked
     let inputId = addon.firstElementChild.id
@@ -357,9 +368,9 @@ addonsList.forEach(addon=>{
         SOT.addon.yearly[inputId].isChecked=checkbox.checked
     }
     
-    console.log(SOT);
+    // console.log(SOT);
 })
-})
+
 
 
 let sum=0
@@ -548,4 +559,11 @@ function generateTitle(){
     p.className="subtitle text-lg pl-10 font-medium p-3  text-[hsl(231,11%,63%)]"
    slide4.appendChild(h2)
    slide4.appendChild(p)
+}
+
+function removeAddons(){
+    document.querySelectorAll('.addon').forEach(addon =>{
+        let input = addon.firstElementChild
+        input.checked=false
+    })
 }
